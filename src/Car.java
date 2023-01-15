@@ -12,16 +12,36 @@ public class Car {
     }
 
     public Car(String brand, String model, double engineVolume, String color, int productionYear, String productionCountry) {
-        this.brand = brand;
-        this.model = model;
-        this.engineVolume = engineVolume;
-        this.color = color;
-        this.productionYear = productionYear;
+        this.brand = checkPropertiesCar(brand);
+        this.model = checkPropertiesCar(model);
+        this.engineVolume = checkEngineVolume(engineVolume);
+        this.color = checkColor(color);
+        this.productionYear = checkProductionYear(productionYear);
         this.productionCountry = productionCountry;
+    }
 
+    public static String checkEmptyValues (String value, String defaultValues) {
+        if (value == null || value.isEmpty() || value.isBlank()){
+            return defaultValues;
+        } else {
+            return value;
+        }
+    }
 
+    public static String checkPropertiesCar (String value) {
+        return checkEmptyValues(value, "default");
+    }
 
+    public static double checkEngineVolume (double value) {
+        return value <= 0 ? 1.5 : value;
+    }
 
+    public static String checkColor (String value) {
+        return checkEmptyValues(value, "белый");
+    }
+
+    public static int checkProductionYear (int value) {
+        return value <= 0 ? 2000 : value;
     }
 
     public String getBrand() {

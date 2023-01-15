@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args) {
+
         System.out.println("Задание 1");
         Car ladaGranta = new Car();
         ladaGranta.setBrand("Lada");
@@ -52,6 +53,9 @@ public class Main {
 
         System.out.println(lada + "\n" + audi + "\n" + bmw + "\n" + kia + "\n" + hyundai);
 
+        System.out.println("Задание 3");
+        Car car = new Car("", null, 0, "", 0, "Россия");
+        System.out.println(car);
 
     }
 } 
