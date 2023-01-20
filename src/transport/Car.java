@@ -2,13 +2,9 @@ package transport;
 
 import java.time.LocalDate;
 
-public class Car {
-    private final String brand;
-    private final String model;
+public class Car extends Transport{
+
     private double engineVolume;
-    private String color;
-    private final int productionYear;
-    private final String productionCountry;
     private String transmission;
     private final String bodyworkType;
     private String registrationNumber;
@@ -17,13 +13,20 @@ public class Car {
     private Key key;
 
 
-    public Car(String brand, String model, double engineVolume, String color, int productionYear, String productionCountry, String transmission, String bodyworkType, String registrationNumber, int numberPlaces, boolean winterTires, Key key) {
-        this.brand = checkPropertiesCar(brand);
-        this.model = checkPropertiesCar(model);
+    public Car(String brand,
+               String model,
+               double engineVolume,
+               String color,
+               int productionYear,
+               String productionCountry,
+               String transmission,
+               String bodyworkType,
+               String registrationNumber,
+               int numberPlaces,
+               boolean winterTires,
+               Key key, double maxSpeed) {
+        super(brand, model, color, productionYear, productionCountry, maxSpeed);
         this.engineVolume = checkEngineVolume(engineVolume);
-        this.color = checkColor(color);
-        this.productionYear = checkProductionYear(productionYear);
-        this.productionCountry = checkProductionCountry(productionCountry);
         this.transmission = checkTransmission(transmission);
         this.bodyworkType = checkBodyworkType(bodyworkType);
         this.registrationNumber = checkRegistrationNumber(registrationNumber);
@@ -48,17 +51,6 @@ public class Car {
         return value <= 0 ? 1.5 : value;
     }
 
-    public static String checkColor (String value) {
-        return checkEmptyValues(value, "белый");
-    }
-
-    public static int checkProductionYear (int value) {
-        return value <= 0 ? 2000 : value;
-    }
-
-    public static String checkProductionCountry (String value) {
-        return checkEmptyValues(value, "default");
-    }
 
     public static String checkTransmission (String value) {
         return checkEmptyValues(value, "default");
@@ -88,29 +80,10 @@ public class Car {
     }
 
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
     public double getEngineVolume() {
         return engineVolume;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public int getProductionYear() {
-        return productionYear;
-    }
-
-    public String getProductionCountry() {
-        return productionCountry;
-    }
 
     public String getTransmission() {
         return transmission;
@@ -134,10 +107,6 @@ public class Car {
 
     public void setEngineVolume(double engineVolume) {
         this.engineVolume = engineVolume;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     public void setTransmission(String transmission) {
@@ -165,7 +134,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return brand + " " + model + " " + productionYear + " года выпуска, страна сборки: " + productionCountry + ", цвет: " + color + ", oбъем двигателя - " + engineVolume + " л, коробка передач: " + transmission + ", кузов: " + bodyworkType + ", регистрационный номер: " + registrationNumber + ", число мест: " + numberPlaces + ", " + (winterTires ? "зимняя" : "летняя") + " резина, " + key;
+        return super.toString() + ", oбъем двигателя - " + engineVolume + " л, коробка передач: " + transmission + ", кузов: " + bodyworkType + ", регистрационный номер: " + registrationNumber + ", число мест: " + numberPlaces + ", " + (winterTires ? "зимняя" : "летняя") + " резина, " + key;
     }
 
     public static class Key {
