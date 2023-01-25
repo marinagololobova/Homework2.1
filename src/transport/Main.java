@@ -2,22 +2,42 @@ package transport;
 
 public class Main {
     public static void main(String[] args) {
+        CategoryB b1 = new CategoryB("b1", true, 5);
+        CategoryB b2 = new CategoryB("b2", true, 7);
+        CategoryB b3 = new CategoryB("b3", true, 3);
+        CategoryB b4 = new CategoryB("b4", true, 8);
 
-        Car lada = new Car("Lada", "Granta", 1.7, "желтый", 2015, "Россия", "механика", "лифтбек", "АА 100 А",4, true, new Car.Key(false, false), 220);
-        Car audi = new Car("Audi", "A8 50 L TDI quattro", 3.0, "черный", 2020, "Германия", "автомат", "хетчбек", "АА 200 А", 5, true, new Car.Key(false, true), 340);
-        Car bmw = new Car("BMW", "Z8", 3.0, "черный", 2021, "Германия", "робот", "седан", "АА 300 А", 4, false, new Car.Key(true, false), 330);
-        Car kia = new Car("Kia", "Sportage 4-го поколения", 2.4, "красный", 2018, "Южная Корея", "механика", "седан", "АА 400А", 4, true, new Car.Key(true, true), 280);
-        Car hyundai = new Car("Hyundai", "Avante", 1.6, "оранжевый", 2016, "Южная Корея", "механика", "универсал", "АА 500 А", 5, false, new Car.Key(false, false),240);
+        Car lada = new Car("Lada", "Granta", 1.7, b1);
+        Car audi = new Car("Audi", "A8 50 L TDI quattro", 3.0, b2);
+        Car bmw = new Car("BMW", "Z8", 3.0, b3);
+        Car kia = new Car("Kia", "Sportage 4-го поколения", 2.4, b4);
+        System.out.println(lada + "\n" + audi + "\n" + bmw + "\n" + kia);
 
-        System.out.println(lada + "\n" + audi + "\n" + bmw + "\n" + kia + "\n" + hyundai);
+        CategoryD d1 = new CategoryD("d1", true, 8);
+        CategoryD d2 = new CategoryD("d2", true, 10);
+        CategoryD d3 = new CategoryD("d3", true, 13);
+        CategoryD d4 = new CategoryD("d4", true, 7);
 
-        Car car = new Car("", null, 0, "", 0, "", null, "", null, 0, true, null, 0);
-        System.out.println(car);
 
-        Bus bas1 = new Bus("Автобус", "1", "зеленый", 2013, "Китай", 120);
-        Bus bas2 = new Bus("Автобус", "2", "красный", 2010, "Россия", 110);
-        Bus bas3 = new Bus("Автобус", "3", "желтый", 2011, "Беларусь", 115);
-        System.out.println(bas1 + "\n" + bas2 + "\n" + bas3);
+        Bus bus1 = new Bus("Автобус", "1", 5.5, d1);
+        Bus bus2 = new Bus("Автобус", "2", 6.2, d2);
+        Bus bus3 = new Bus("Автобус", "3", 5.1, d3);
+        Bus bus4 = new Bus("Автобус", "4", 6.0, d4);
+        System.out.println(bus1 + "\n" + bus2 + "\n" + bus3 + "\n" + bus4);
+
+        CategoryC c1 = new CategoryC("c1", true, 6);
+        CategoryC c2 = new CategoryC("c2", true, 9);
+        CategoryC c3 = new CategoryC("c3", true, 10);
+        CategoryC c4 = new CategoryC("c4", true, 13);
+
+
+        Trucks[] trucks = new Trucks[4];
+        Trucks trucks1 = new Trucks("Грузовик", "1", 8.3, c1);
+        Trucks trucks2 = new Trucks("Грузовик", "2", 7.5, c2);
+        Trucks trucks3 = new Trucks("Грузовик", "3", 9.2, c3);
+        Trucks trucks4 = new Trucks("Грузовик", "4", 10.0, c4);
+        System.out.println(trucks1 + "\n" + trucks2 + "\n" + trucks3 + "\n" + trucks4);
+
 
     }
 } 

@@ -1,56 +1,63 @@
 package transport;
 
-import java.time.LocalDate;
+//import java.time.LocalDate;
 
-public class Car extends Transport{
+public class Car extends Transport <CategoryB>{
 
-    private double engineVolume;
-    private String transmission;
+    //private double engineVolume;
+    /*private String transmission;
     private final String bodyworkType;
     private String registrationNumber;
     private final int numberPlaces;
     private boolean winterTires;
-    private Key key;
+    private Key key;*/
 
-
-    public Car(String brand,
-               String model,
-               double engineVolume,
-               String color,
-               int productionYear,
-               String productionCountry,
-               String transmission,
-               String bodyworkType,
-               String registrationNumber,
-               int numberPlaces,
-               boolean winterTires,
-               Key key, double maxSpeed) {
-        super(brand, model, color, productionYear, productionCountry, maxSpeed);
-        this.engineVolume = checkEngineVolume(engineVolume);
+    public Car(String brand, String model, double engineVolume, CategoryB driver) {
+        super(brand, model, engineVolume, driver);
+    /*this.engineVolume = checkEngineVolume(engineVolume);
         this.transmission = checkTransmission(transmission);
         this.bodyworkType = checkBodyworkType(bodyworkType);
         this.registrationNumber = checkRegistrationNumber(registrationNumber);
         this.numberPlaces = checkNumberPlaces(numberPlaces);
         this.winterTires = winterTires;
-        setKey(key);
+        setKey(key);*/
     }
 
-    public static String checkEmptyValues (String value, String defaultValues) {
-        if (value == null || value.isEmpty() || value.isBlank()){
-            return defaultValues;
-        } else {
-            return value;
-        }
+    @Override
+    public void startMoving() {
+        System.out.println("Легковой автомобиль " + getBrand() + " начал движение.");
     }
 
-    public static String checkPropertiesCar (String value) {
+    @Override
+    public void stopMoving() {
+        System.out.println("Легковой автомобиль " + getBrand() + " закончил движение.");
+    }
+
+    @Override
+    public void pitStop() {
+        System.out.println("Легковой автомобиль на пит стопе");
+    }
+
+    @Override
+    public void bestLapTime() {
+        double min = 70;
+        double max = 100;
+        double bestTime = (min + (max - min) * Math.random());
+        System.out.println("Лучшее время круга легкового автомобиля: " + bestTime);
+    }
+
+    @Override
+    public void maxSpeed() {
+        double min = 120;
+        double max = 190;
+        double bestTime = (min + (max - min) * Math.random());
+        System.out.println("Максимальная скорость автомобиля: " + bestTime);
+    }
+
+
+    /*public static String checkPropertiesCar (String value) {
         return checkEmptyValues(value, "default");
     }
-
-    public static double checkEngineVolume (double value) {
-        return value <= 0 ? 1.5 : value;
-    }
-
 
     public static String checkTransmission (String value) {
         return checkEmptyValues(value, "default");
@@ -69,7 +76,7 @@ public class Car extends Transport{
     }
 
 
-    public void changeTiresForSeasonalOnes (int month) {
+    /*public void changeTiresForSeasonalOnes (int month) {
         LocalDate today = LocalDate.now();
         month = today.getMonthValue();
         if ((month >= 11 && month <= 12) || (month >= 1 && month <= 3)) {
@@ -130,14 +137,14 @@ public class Car extends Transport{
             key = new Key(false, false);
         }
         this.key = key;
-    }
+    }*/
 
-    @Override
+    /*@Override
     public String toString() {
         return super.toString() + ", oбъем двигателя - " + engineVolume + " л, коробка передач: " + transmission + ", кузов: " + bodyworkType + ", регистрационный номер: " + registrationNumber + ", число мест: " + numberPlaces + ", " + (winterTires ? "зимняя" : "летняя") + " резина, " + key;
     }
 
-    public static class Key {
+    /*public static class Key {
         private final boolean remoteEngineStart;
         private final boolean keylessAccess;
 
@@ -158,5 +165,5 @@ public class Car extends Transport{
         public String toString() {
             return (remoteEngineStart ? "удаленный запуск двигателя" : "без удаленного запуска двигателя") + ", " + (keylessAccess ? "безключивой доступ" : "доступ с ключом");
         }
-    }
+    }*/
 }
