@@ -1,0 +1,38 @@
+package transport;
+
+public class Trucks extends Transport<CategoryC> {
+    public Trucks(String brand, String model, double engineVolume, CategoryC driver) {
+        super(brand, model, engineVolume, driver);
+    }
+
+    @Override
+    public void startMoving() {
+        System.out.println("Грузовой автомобиль " + getBrand() + " начал движение.");
+    }
+
+    @Override
+    public void stopMoving() {
+        System.out.println("Грузовой автомобиль " + getBrand() + " закончил движение.");
+    }
+
+    @Override
+    public void pitStop() {
+        System.out.println("Грузовик на пит стопе");
+    }
+
+    @Override
+    public void bestLapTime() {
+        double min = 80;
+        double max = 120;
+        double bestTime = (min + (max - min) * Math.random());
+        System.out.println("Лучшее время круга грузовика: " + bestTime);
+    }
+
+    @Override
+    public void maxSpeed() {
+        double min = 70;
+        double max = 110;
+        double bestTime = (min + (max - min) * Math.random());
+        System.out.println("Максимальная скорость грузовика: " + bestTime);
+    }
+}

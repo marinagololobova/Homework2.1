@@ -1,22 +1,25 @@
 package transport;
 
-import static transport.Car.checkEmptyValues;
-
-public class Transport {
+public abstract class Transport <T extends Driver> implements Competing {
     private final String brand;
     private final String model;
-    private String color;
-    private final int productionYear;
-    private final String productionCountry;
-    private double maxSpeed;
+    private double engineVolume;
+    private T driver;
 
-    public Transport(String brand, String model, String color, int productionYear, String productionCountry, double maxSpeed) {
+    //private String color;
+    //private final int productionYear;
+    /*private final String productionCountry;
+    private double maxSpeed;*/
+
+    public Transport(String brand, String model, double engineVolume, T driver) {
         this.brand = checkBrand(brand);
         this.model = checkModel(model);
-        this.color = checkColor(color);
+        this.engineVolume = checkEngineVolume(engineVolume);
+        this.driver = driver;
+        /*this.color = checkColor(color);
         this.productionYear = checkProductionYear(productionYear);
         this.productionCountry = checkProductionCountry(productionCountry);
-        this.maxSpeed = checkMaxSpeed(maxSpeed);
+        this.maxSpeed = checkMaxSpeed(maxSpeed);*/
     }
 
     public String getBrand() {
@@ -27,28 +30,28 @@ public class Transport {
         return model;
     }
 
-    public String getColor() {
-        return color;
+    public double getEngineVolume() {
+        return engineVolume;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setEngineVolume(double engineVolume) {
+        this.engineVolume = engineVolume;
     }
 
-    public int getProductionYear() {
-        return productionYear;
+    public T getDriver() {
+        return driver;
     }
 
-    public String getProductionCountry() {
-        return productionCountry;
+    public void setDriver(T driver) {
+        this.driver = driver;
     }
 
-    public double getMaxSpeed() {
-        return maxSpeed;
-    }
-
-    public void setMaxSpeed(double maxSpeed) {
-        this.maxSpeed = maxSpeed;
+    public static String checkEmptyValues (String value, String defaultValues) {
+        if (value == null || value.isEmpty() || value.isBlank()){
+            return defaultValues;
+        } else {
+            return value;
+        }
     }
 
     public static String checkBrand (String value) {
@@ -59,7 +62,15 @@ public class Transport {
         return checkEmptyValues(value, "default");
     }
 
-    public static String checkColor (String value) {
+    public static double checkEngineVolume (double value) {
+        return value <= 0 ? 1.5 : value;
+    }
+
+    public abstract void startMoving();
+
+    public abstract void stopMoving();
+
+    /*public static String checkColor (String value) {
         return checkEmptyValues(value, "белый");
     }
 
@@ -73,10 +84,11 @@ public class Transport {
 
     public static double checkMaxSpeed (double value) {
         return value <= 0 ? 200 : value;
-    }
+    }*/
 
     @Override
     public String toString() {
-        return getBrand() + " " + getModel() + " " + getProductionYear() + " года выпуска, страна сборки: " + getProductionCountry() + ", цвет: " + getColor() + ", максимальная скорость: " + getMaxSpeed() + " км/ч";
+        //return getBrand() + " " + getModel() + ", мощность двигателя: " + engineVolume;
+        return "Водитель " + driver.getFullName() + " управляет автомобилем " + getBrand() + " " + getModel() + " и будет участвовать в заезде";
     }
 }
