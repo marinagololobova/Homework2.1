@@ -6,20 +6,12 @@ public abstract class Transport <T extends Driver> implements Competing {
     private double engineVolume;
     private T driver;
 
-    //private String color;
-    //private final int productionYear;
-    /*private final String productionCountry;
-    private double maxSpeed;*/
 
     public Transport(String brand, String model, double engineVolume, T driver) {
         this.brand = checkBrand(brand);
         this.model = checkModel(model);
         this.engineVolume = checkEngineVolume(engineVolume);
         this.driver = driver;
-        /*this.color = checkColor(color);
-        this.productionYear = checkProductionYear(productionYear);
-        this.productionCountry = checkProductionCountry(productionCountry);
-        this.maxSpeed = checkMaxSpeed(maxSpeed);*/
     }
 
     public String getBrand() {
@@ -70,25 +62,11 @@ public abstract class Transport <T extends Driver> implements Competing {
 
     public abstract void stopMoving();
 
-    /*public static String checkColor (String value) {
-        return checkEmptyValues(value, "белый");
-    }
+    public abstract void printType();
 
-    public static int checkProductionYear (int value) {
-        return value <= 0 ? 2000 : value;
-    }
-
-    public static String checkProductionCountry (String value) {
-        return checkEmptyValues(value, "Россия");
-    }
-
-    public static double checkMaxSpeed (double value) {
-        return value <= 0 ? 200 : value;
-    }*/
 
     @Override
     public String toString() {
-        //return getBrand() + " " + getModel() + ", мощность двигателя: " + engineVolume;
         return "Водитель " + driver.getFullName() + " управляет автомобилем " + getBrand() + " " + getModel() + " и будет участвовать в заезде";
     }
 }
