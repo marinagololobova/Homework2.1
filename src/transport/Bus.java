@@ -54,4 +54,9 @@ public class Bus extends Transport<CategoryD> {
         double bestTime = (min + (max - min) * Math.random());
         System.out.println("Максимальная скорость автобуса: " + bestTime);
     }
+
+    @Override
+    public void passDiagnostics() throws TransportTypeException{
+        throw new TransportTypeException("Автобусы диагностику проходить не должны");
+    }
 }

@@ -15,22 +15,7 @@ public class Main {
         for (Car i : cars) {
             System.out.println(i);
             i.printType();
-        }
-
-
-        CategoryD d1 = new CategoryD("d1", true, 8);
-        CategoryD d2 = new CategoryD("d2", true, 10);
-        CategoryD d3 = new CategoryD("d3", true, 13);
-        CategoryD d4 = new CategoryD("d4", true, 7);
-
-        Bus[] buses = new Bus[4];
-        buses[0] = new Bus("Автобус", "1", null, 5.5, d1);
-        buses[1] = new Bus("Автобус", "2", Capacity.VERYSMALL, 6.2, d2);
-        buses[2] = new Bus("Автобус", "3", Capacity.VERYBIG, 5.1, d3);
-        buses[3] = new Bus("Автобус", "4", Capacity.AVERAGE, 6.0, d4);
-        for (Bus i : buses) {
-            System.out.println(i);
-            i.printType();
+            i.passDiagnostics();
         }
 
 
@@ -47,7 +32,29 @@ public class Main {
         for (Trucks i : trucks) {
             System.out.println(i);
             i.printType();
+            i.passDiagnostics();
         }
 
+        CategoryD d1 = new CategoryD("d1", true, 8);
+        CategoryD d2 = new CategoryD("d2", true, 10);
+        CategoryD d3 = new CategoryD("d3", true, 13);
+        CategoryD d4 = new CategoryD("d4", true, 7);
+
+
+        Bus[] buses = new Bus[4];
+        buses[0] = new Bus("Автобус", "1", null, 5.5, d1);
+        buses[1] = new Bus("Автобус", "2", Capacity.VERYSMALL, 6.2, d2);
+        buses[2] = new Bus("Автобус", "3", Capacity.VERYBIG, 5.1, d3);
+        buses[3] = new Bus("Автобус", "4", Capacity.AVERAGE, 6.0, d4);
+        for (Bus i : buses) {
+            System.out.println(i);
+            i.printType();
+            try {
+                i.passDiagnostics();
+            } catch (TransportTypeException e) {
+                System.out.println(e.getMessage());
+            }
+
+        }
     }
 } 
