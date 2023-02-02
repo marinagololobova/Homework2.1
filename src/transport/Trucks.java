@@ -54,4 +54,9 @@ public class Trucks extends Transport<CategoryC> {
         double bestTime = (min + (max - min) * Math.random());
         System.out.println("Максимальная скорость грузовика: " + bestTime);
     }
+
+    @Override
+    public void passDiagnostics() {
+        System.out.println("Грузовой автомобиль может проходить диагностику");
+    }
 }

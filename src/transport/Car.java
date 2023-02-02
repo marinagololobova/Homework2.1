@@ -26,6 +26,7 @@ public class Car extends Transport <CategoryB>{
         }
     }
 
+
     @Override
     public void startMoving() {
         System.out.println("Легковой автомобиль " + getBrand() + " начал движение.");
@@ -55,5 +56,10 @@ public class Car extends Transport <CategoryB>{
         double max = 190;
         double bestTime = (min + (max - min) * Math.random());
         System.out.println("Максимальная скорость автомобиля: " + bestTime);
+    }
+
+    @Override
+    public void passDiagnostics() {
+        System.out.println("Легковой автомобиль может проходить диагностику");
     }
 }
