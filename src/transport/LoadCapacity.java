@@ -1,7 +1,9 @@
 package transport;
 
 public enum LoadCapacity {
-    N1(null, 3.5f), N2(3.6f,12f), N3(13f, null);
+    N1(null, 3.5f),
+    N2(3.6f,12f),
+    N3(13f, null);
     private Float lowerBound;
     private Float upperBound;
 

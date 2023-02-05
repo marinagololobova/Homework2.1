@@ -1,9 +1,12 @@
 package transport;
 
+import java.util.List;
+
 public class Bus extends Transport<CategoryD> {
     private Capacity capacity;
-    public Bus(String brand, String model, Capacity capacity, double engineVolume, CategoryD driver) {
-        super(brand, model, engineVolume, driver);
+
+    public Bus(String brand, String model, Capacity capacity, double engineVolume, CategoryD driver, List<Mechanic> mechanicsList) {
+        super(brand, model, engineVolume, driver, mechanicsList);
         this.capacity = capacity;
     }
 
@@ -59,4 +62,20 @@ public class Bus extends Transport<CategoryD> {
     public void passDiagnostics() throws TransportTypeException{
         throw new TransportTypeException("Автобусы диагностику проходить не должны");
     }
+
+    @Override
+    public void findDriverName() {
+        System.out.println("Имя водителя " + getBrand() + " " + getModel() + ": " + getDriver().getFullName());
+    }
+
+    @Override
+    public void findMechanics() {
+        System.out.println("Механики " + getBrand() + " " + getModel() + ": " + getMechanicsList());
+    }
+
+    @Override
+    public String repair() {
+        return "Ремонтируем автобус";
+    }
+
 }

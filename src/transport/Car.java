@@ -1,11 +1,13 @@
 package transport;
 
+import java.util.List;
+
 public class Car extends Transport <CategoryB>{
 
     private Body body;
 
-    public Car(String brand, String model, Body body, double engineVolume, CategoryB driver) {
-        super(brand, model, engineVolume, driver);
+    public Car(String brand, String model, Body body, double engineVolume, CategoryB driver, List<Mechanic> mechanicsList) {
+        super(brand, model, engineVolume, driver, mechanicsList);
         this.body = body;
     }
 
@@ -42,6 +44,7 @@ public class Car extends Transport <CategoryB>{
         System.out.println("Легковой автомобиль на пит стопе");
     }
 
+
     @Override
     public void bestLapTime() {
         double min = 70;
@@ -62,4 +65,21 @@ public class Car extends Transport <CategoryB>{
     public void passDiagnostics() {
         System.out.println("Легковой автомобиль может проходить диагностику");
     }
+
+    @Override
+    public void findDriverName() {
+        System.out.println("Имя водителя " + getBrand() + " " + getModel() + ": " + getDriver().getFullName());
+    }
+
+    @Override
+    public void findMechanics() {
+        System.out.println("Механики " + getBrand() + " " + getModel() + ": " + getMechanicsList());
+    }
+
+
+    @Override
+    public String repair() {
+        return "Ремонтируем автомобиль";
+    }
+
 }
