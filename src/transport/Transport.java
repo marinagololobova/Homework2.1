@@ -1,18 +1,23 @@
 package transport;
 
+import java.util.List;
+
 public abstract class Transport <T extends Driver> implements Competing {
     private final String brand;
     private final String model;
     private double engineVolume;
     private T driver;
+    private List<Mechanic> mechanicsList;
 
 
-    public Transport(String brand, String model, double engineVolume, T driver) {
+    public Transport(String brand, String model, double engineVolume, T driver, List<Mechanic> mechanicsList) {
         this.brand = checkBrand(brand);
         this.model = checkModel(model);
         this.engineVolume = checkEngineVolume(engineVolume);
         this.driver = driver;
+        this.mechanicsList = mechanicsList;
     }
+
 
     public String getBrand() {
         return brand;
@@ -36,6 +41,10 @@ public abstract class Transport <T extends Driver> implements Competing {
 
     public void setDriver(T driver) {
         this.driver = driver;
+    }
+
+    public List<Mechanic> getMechanicsList() {
+        return mechanicsList;
     }
 
     public static String checkEmptyValues (String value, String defaultValues) {
@@ -65,6 +74,17 @@ public abstract class Transport <T extends Driver> implements Competing {
     public abstract void printType();
 
     public abstract void passDiagnostics() throws TransportTypeException;
+    public abstract void findDriverName();
+    public abstract void findMechanics();
+    public abstract String repair();
+    public boolean checkAddingQueueServiceStation() {
+        try {
+            passDiagnostics();
+        } catch (TransportTypeException e) {
+            return false;
+        }
+        return true;
+    }
 
 
     @Override

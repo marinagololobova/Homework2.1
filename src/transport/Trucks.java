@@ -1,9 +1,13 @@
 package transport;
 
+import java.lang.reflect.Type;
+import java.util.List;
+
 public class Trucks extends Transport<CategoryC> {
     private LoadCapacity loadCapacity;
-    public Trucks(String brand, String model, LoadCapacity loadCapacity, double engineVolume, CategoryC driver) {
-        super(brand, model, engineVolume, driver);
+
+    public Trucks(String brand, String model, LoadCapacity loadCapacity, double engineVolume, CategoryC driver, List<Mechanic> mechanicsList) {
+        super(brand, model, engineVolume, driver, mechanicsList);
         this.loadCapacity = loadCapacity;
     }
 
@@ -59,4 +63,20 @@ public class Trucks extends Transport<CategoryC> {
     public void passDiagnostics() {
         System.out.println("Грузовой автомобиль может проходить диагностику");
     }
+
+    @Override
+    public void findDriverName() {
+        System.out.println("Имя водителя " + getBrand() + " " + getModel() + ": " + getDriver().getFullName());
+    }
+
+    @Override
+    public void findMechanics() {
+        System.out.println("Механики " + getBrand() + " " + getModel() + ": " + getMechanicsList());
+    }
+
+    @Override
+    public String repair() {
+        return "Ремонтируем грузовик";
+    }
+
 }
