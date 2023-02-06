@@ -76,5 +76,24 @@ public class Main {
             sto.carryOutMaintenance(maintenanceQueue);
         }
 
+        Map<Transport, List<Mechanic>> transportMechanicMap = new HashMap<>();
+        transportMechanicMap.put(transportList.get(0), transportList.get(0).getMechanicsList());
+        transportMechanicMap.put(transportList.get(1), transportList.get(1).getMechanicsList());
+        transportMechanicMap.put(transportList.get(2), transportList.get(2).getMechanicsList());
+        transportMechanicMap.put(transportList.get(3), transportList.get(3).getMechanicsList());
+        transportMechanicMap.put(transportList.get(4), transportList.get(4).getMechanicsList());
+        transportMechanicMap.put(transportList.get(5), transportList.get(5).getMechanicsList());
+        transportMechanicMap.put(transportList.get(6), transportList.get(6).getMechanicsList());
+        transportMechanicMap.put(transportList.get(7), transportList.get(7).getMechanicsList());
+        transportMechanicMap.put(transportList.get(8), transportList.get(8).getMechanicsList());
+        transportMechanicMap.put(transportList.get(9), transportList.get(9).getMechanicsList());
+        transportMechanicMap.put(transportList.get(10), transportList.get(10).getMechanicsList());
+        transportMechanicMap.put(transportList.get(11), transportList.get(11).getMechanicsList());
+
+        for (Map.Entry<Transport, List<Mechanic>> entry : transportMechanicMap.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+
+
     }
 } 
