@@ -94,6 +94,22 @@ public class Main {
             System.out.println(entry.getKey() + " : " + entry.getValue());
         }
 
+        Set<Driver> driverSet = new HashSet<>();
+        driverSet.add(b1);
+        driverSet.add(b2);
+        driverSet.add(b3);
+        driverSet.add(b4);
+        driverSet.add(c1);
+        driverSet.add(c2);
+        driverSet.add(c3);
+        driverSet.add(c4);
+        driverSet.add(d1);
+        driverSet.add(d2);
+        driverSet.add(d3);
+        driverSet.add(d4);
 
+        Iterator<Driver> iterator = driverSet.iterator();
+        while (iterator.hasNext())
+            System.out.println(iterator.next());
     }
 } 
